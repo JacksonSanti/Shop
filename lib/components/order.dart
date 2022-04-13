@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shop/models/order.dart';
-import 'package:shop/models/product.dart';
 
 class OrderWidget extends StatefulWidget {
   final Order order;
@@ -11,13 +10,11 @@ class OrderWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<OrderWidget> createState() => _OrderWidgetState();
+  _OrderWidgetState createState() => _OrderWidgetState();
 }
 
 class _OrderWidgetState extends State<OrderWidget> {
-
-  bool _expanded = false ;
-
+  bool _expanded = false;
 
   @override
   Widget build(BuildContext context) {
@@ -32,45 +29,45 @@ class _OrderWidgetState extends State<OrderWidget> {
             trailing: IconButton(
               icon: Icon(Icons.expand_more),
               onPressed: () {
-
-                _expanded = !_expanded;
-
+                setState(() {
+                  _expanded = !_expanded;
+                });
               },
             ),
           ),
-          if(_expanded)
-          Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 15,
-              vertical: 4,
+          if (_expanded)
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
+                vertical: 4,
+              ),
+              height: (widget.order.products.length * 25) + 10,
+              child: ListView(
+                children: widget.order.products.map(
+                  (product) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          product.name,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          '${product.quantity}x R\$ ${product.price}',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                ).toList(),
+              ),
             ),
-            height: (widget.order.products.length * 24.0) + 10,
-            child: ListView(
-              children: widget.order.products.map((Product) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      Product.name,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-
-                      ),
-                    ),
-                    Text(
-                      '${Product.quantity}x R\$ ${Product.price}',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.grey
-                        
-                      ) ,
-                    )
-                  ],
-                );
-              }).toList(),
-            ),
-          )
         ],
       ),
     );

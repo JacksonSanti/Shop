@@ -15,9 +15,6 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final msg = ScaffoldMessenger.of(context);
-
-
-
     return ListTile(
       leading: CircleAvatar(
         backgroundImage: NetworkImage(product.imageUrl),
@@ -29,7 +26,7 @@ class ProductItem extends StatelessWidget {
           children: [
             IconButton(
               icon: Icon(Icons.edit),
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(context).colorScheme.primary,
               onPressed: () {
                 Navigator.of(context).pushNamed(
                   AppRoutes.PRODUCT_FORM,
@@ -61,15 +58,16 @@ class ProductItem extends StatelessWidget {
                   if (value ?? false) {
                     try {
                       await Provider.of<ProductList>(
-                      context,
-                      listen: false,
-                    ).removeProduct(product);    
+                        context,
+                        listen: false,
+                      ).removeProduct(product);
                     } on HttpException catch (error) {
                       msg.showSnackBar(
-                        SnackBar(content: Text(error.toString()))
+                        SnackBar(
+                          content: Text(error.toString()),
+                        ),
                       );
                     }
-                    
                   }
                 });
               },

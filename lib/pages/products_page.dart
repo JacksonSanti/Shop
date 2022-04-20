@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop/components/app_drawer.dart';
@@ -12,8 +10,8 @@ class ProductsPage extends StatelessWidget {
 
   Future<void> _refreshProducts(BuildContext context) {
     return Provider.of<ProductList>(
-      context, 
-      listen: false
+      context,
+      listen: false,
     ).loadProducts();
   }
 

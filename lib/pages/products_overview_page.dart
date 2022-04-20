@@ -27,15 +27,14 @@ class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
   void initState() {
     super.initState();
     Provider.of<ProductList>(
-      context, 
-      listen: false
+      context,
+      listen: false,
     ).loadProducts().then((value) {
       setState(() {
         _isLoading = false;
       });
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -79,11 +78,9 @@ class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
           ),
         ],
       ),
-      body: _isLoading ? 
-      Center(
-        child: CircularProgressIndicator()
-      ):
-        ProductGrid(_showFavoriteOnly),
+      body: _isLoading
+          ? Center(child: CircularProgressIndicator())
+          : ProductGrid(_showFavoriteOnly),
       drawer: AppDrawer(),
     );
   }

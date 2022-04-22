@@ -30,8 +30,6 @@ class Auth with ChangeNotifier {
     return isAuth ? _userId : null;
   }
 
-  //AIzaSyCCHT3c_l_M7YXyu2h2fkJZ8lgonWiuRYk
-
   Future<void> _authenticate(
       String email, String password, String urlFragment) async {
     final url =

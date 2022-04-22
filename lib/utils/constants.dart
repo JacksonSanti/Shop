@@ -1,8 +1,8 @@
 class Constants {
   static const USER_FAVORITES_URL =
-      'https://cloud-shopjk-default-rtdb.firebaseio.com/userFavorites';
+      'https://cloud-shopjk-default-rtdb.firebaseio.com//userFavorites';
   static const PRODUCT_BASE_URL =
-      'https://cloud-shopjk-default-rtdb.firebaseio.com/products';
+      'https://cloud-shopjk-default-rtdb.firebaseio.com//products';
   static const ORDER_BASE_URL =
-      'https://cloud-shopjk-default-rtdb.firebaseio.com/orders';
+      'https://cloud-shopjk-default-rtdb.firebaseio.com//orders';
 }
